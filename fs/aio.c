@@ -54,16 +54,16 @@
 #define AIO_RING_COMPAT_FEATURES	1
 #define AIO_RING_INCOMPAT_FEATURES	0
 struct aio_ring {
-	unsigned	id;	/* kernel internal index number */
-	unsigned	nr;	/* number of io_events */
-	unsigned	head;	/* Written to by userland or under ring_lock
+	signed	id;	/* kernel internal index number */
+	signed	nr;	/* number of io_events */
+	signed	head;	/* Written to by userland or under ring_lock
 				 * mutex by aio_read_events_ring(). */
-	unsigned	tail;
+	signed	tail;
 
-	unsigned	magic;
-	unsigned	compat_features;
-	unsigned	incompat_features;
-	unsigned	header_length;	/* size of aio_ring */
+	signed	magic;
+	signed	compat_features;
+	signed	incompat_features;
+	signed	header_length;	/* size of aio_ring */
 
 
 	struct io_event		io_events[];
